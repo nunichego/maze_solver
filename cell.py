@@ -22,19 +22,36 @@ class Cell:
         if self.left_wall:
             line = Line(Point(self.__x1, self.__y1), Point(self.__x1, self.__y2))
             self.__win.draw_line(line)
+        else:
+            line = Line(Point(self.__x1, self.__y1), Point(self.__x1, self.__y2))
+            self.__win.draw_line(line, "white")
+
         if self.right_wall:
             line = Line(Point(self.__x2, self.__y1), Point(self.__x2, self.__y2))
             self.__win.draw_line(line)
+        else:
+            line = Line(Point(self.__x2, self.__y1), Point(self.__x2, self.__y2))
+            self.__win.draw_line(line, "white")
+
         if self.top_wall:
             line = Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1))
             self.__win.draw_line(line)
+        else:
+            line = Line(Point(self.__x1, self.__y1), Point(self.__x2, self.__y1))
+            self.__win.draw_line(line, "white")
+
         if self.bottom_wall:
             line = Line(Point(self.__x1, self.__y2), Point(self.__x2, self.__y2))
             self.__win.draw_line(line)
+        else:
+            line = Line(Point(self.__x1, self.__y2), Point(self.__x2, self.__y2))
+            self.__win.draw_line(line, "white")
 
     def draw_move(self, to_cell, undo=False):
-        center_from = Point((self.__x2 - self.__x1) / 2 + self.__x1, (self.__y2 - self.__y1) / 2 + self.__y1)
-        center_to = Point((to_cell.__x2 - to_cell.__x1) / 2 + to_cell.__x1, (to_cell.__y2 - to_cell.__y1) / 2 + to_cell.__y1)
+        center_from = Point((self.__x2 - self.__x1) / 2 + 
+                            self.__x1, (self.__y2 - self.__y1) / 2 + self.__y1)
+        center_to = Point((to_cell.__x2 - to_cell.__x1) / 2 + 
+                          to_cell.__x1, (to_cell.__y2 - to_cell.__y1) / 2 + to_cell.__y1)
         line = Line(center_from, center_to, )
         if undo == False:
             self.__win.draw_line(line, "red")
